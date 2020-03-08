@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/railsapp
+      - ruby_gems:/ruby_gems
+      - node_modules:/node_modules
+    ports:
+      - 3000:3000 # App server
+      - 4000:4000 # Capybara server
+    env_file:
+      - .env
+    environment:
+      # For our web service to find our webpacker service.
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
+      # Selenium listens for incoming client requests at:
+      - SELENIUM_REMOTE_URL=http://selenium_chrome:4444/wd/hub
+      # Capybara server listens for incoming client requests at:
+      - CAPYBARA_SERVER_HOST=0.0.0.0 # Any IP address
+      - CAPYBARA_SERVER_PORT=4000
+      # Capybara uses this when visiting a page.
+      - CAPYBARA_APP_HOST=http://web
+    depends_on:
+      - webpacker
+      - database
+      - redis
+      - selenium_chrome
+
+  webpacker:
+    build: .
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/railsapp
+      - ruby_gems:/ruby_gems
+      - node_modules:/node_modules
+    ports:
+      - 3035:3035
+    env_file:
+      - .env
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0 # Any IP address
+
+  database:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/var/lib/redis
+
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - "5900:5900"
+
+volumes:
+  db_data:
+  redis_data:
+  ruby_gems:
+  node_modules:
