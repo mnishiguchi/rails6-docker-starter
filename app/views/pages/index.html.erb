@@ -1,0 +1,16 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",function(){
+      document.getElementsByTagName('h1')[0].append(' ENHANCED!');
+    });
+  </script>
+<% end %>
+
+<h1>Home Page</h1>
+<p>Find me in app/views/pages/index.html.erb</p>
+
+<h2>Redis cache</h2>
+<p>This page has been viewed <%= pluralize(@page_hits, 'time') %>!</p>
+
+<h2>React app</h2>
+<%= javascript_pack_tag 'hello_react' %>
