@@ -34,6 +34,7 @@ module Railsapp
       g.stylesheets         false
       g.javascripts         false
       g.helper              false
+      g.jbuilder            false
       g.fixture_replacement :factory_bot, dir: "test/factories"
       g.test_framework      :test_unit, fixtures: false
     end
