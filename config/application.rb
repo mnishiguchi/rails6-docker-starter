@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -28,5 +28,14 @@ module Railsapp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # http://guides.rubyonrails.org/generators.html
+    config.generators do |g|
+      g.stylesheets         false
+      g.javascripts         false
+      g.helper              false
+      g.fixture_replacement :factory_bot, dir: "test/factories"
+      g.test_framework      :test_unit, fixtures: false
+    end
   end
 end
