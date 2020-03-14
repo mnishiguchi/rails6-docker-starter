@@ -10,4 +10,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
+  include FactoryBot::Syntax::Methods
 end
