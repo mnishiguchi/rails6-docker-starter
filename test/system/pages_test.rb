@@ -16,8 +16,8 @@ class PagesTest < ApplicationSystemTestCase
     assert_text 'This page has been viewed 2 times!'
   end
 
-  test 'react app rendering text' do
+  test 'HelloWorld component rendering message' do
     visit root_url
-    assert_text 'Hello React!'
+    assert_text 'Hello from react-rails'
   end
 end
