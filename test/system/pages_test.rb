@@ -5,8 +5,8 @@ require 'application_system_test_case'
 class PagesTest < ApplicationSystemTestCase
   driven_by :rack_test
 
-  test 'Page header text is correct' do
+  test 'HelloWorld component rendering message' do
     visit root_url
-    assert_selector 'h1', text: 'Home Page'
+    assert_text 'Hello from react-rails'
   end
 end

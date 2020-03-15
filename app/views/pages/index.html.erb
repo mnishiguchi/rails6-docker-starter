@@ -13,4 +13,4 @@
 <p>This page has been viewed <%= pluralize(@page_hits, 'time') %>!</p>
 
 <h2>React app</h2>
-<%= javascript_pack_tag 'hello_react' %>
+<%= react_component("HelloWorld", { greeting: "Hello from react-rails." }) %>
