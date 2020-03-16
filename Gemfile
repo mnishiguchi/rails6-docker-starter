@@ -40,6 +40,8 @@ end
 
 group :test do
   gem 'capybara', '~> 3.7' # Adds support for Capybara system testing and selenium driver
+  gem 'fakeredis' # http://guilleiguaran.github.io/fakeredis/
+  gem 'mocha'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver', '~> 3.14'
   gem 'shoulda', '~> 3.5'
