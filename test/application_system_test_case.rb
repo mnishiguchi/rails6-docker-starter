@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium_chrome_in_container
+  driven_by :headless_selenium_chrome_in_container
 
   def setup
     # https://www.rubydoc.info/github/jnicklas/capybara/Capybara.configure
